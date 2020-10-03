@@ -25,7 +25,23 @@ Sample Output
 5 1 2 3 4
 
 '''
+import time
+#if __name__ == '__main__':
+'''
+nd = input().split()
 
+n = int(nd[0])
+
+d = int(nd[1])
+
+a = list(map(int, input().rstrip().split()))
+'''
+    
+    
+    
+n,s=map(int,input().split())       # Using input format,in short manner
+arr=list(map(int,input().split())) # better understandable also
+t1=time.time()
 def rotLeft(a, num):
     length = len(a)
     b = []
@@ -33,18 +49,30 @@ def rotLeft(a, num):
         num = num % length
     b = a[num:length] + a[0:num]
     return b
+result = rotLeft(arr, s)
+print(' '.join(map(str, result)))
+t2=time.time()
+print(t2-t1)
 
 
+t3=time.time()
+mod_arr=[0]*n
+for i in range(n):
+    ind=(i-s)%n
+    mod_arr[ind]=arr[i]
+print(*mod_arr)
+t4=time.time()
+print(t4-t3)
 
-if __name__ == '__main__':
-    nd = input().split()
+'''
+O/P==>
+5 4
+1 2 3 4 5
+5 1 2 3 4
+0.002243518829345703
+5 1 2 3 4
+0.008288145065307617
 
-    n = int(nd[0])
-
-    d = int(nd[1])
-
-    a = list(map(int, input().rstrip().split()))
-
-    result = rotLeft(a, d)
-
-    print(' '.join(map(str, result)))
+Time complexity same O(n),
+Using pyhton bidirectional indexing.
+'''
